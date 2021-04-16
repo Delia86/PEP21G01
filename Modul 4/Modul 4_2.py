@@ -1,40 +1,40 @@
-# # #set
-# #
-# # empty_set=set()
-# # print(type(empty_set))
-# #
-# # set1={1,2,3}
-# # set2={2,3,4}
-# # intersect=set1.intersection(set2)
-# # print(intersect)
-# #
-# # union=set1.union(set2)
-# # print(union)
+# #set
 #
-# # pinball test with 10  possible result
-# test_data=[[1,2,3],[3,3,5],[8,9,4],[2,8,4]]
-# iter_test_data=[]
-# def pinball_test(data):
-#     comparison_data=list(range(1,11))
-#     print(comparison_data)
-#     for test_data in comparison_data.copy():
+# empty_set=set()
+# print(type(empty_set))
 #
-#         for iner_list in data:
-#             for elem in iner_list:
-#                 if elem in comparison_data:
-#                     comparison_data.remove(elem)
-#     return comparison_data
+# set1={1,2,3}
+# set2={2,3,4}
+# intersect=set1.intersection(set2)
+# print(intersect)
 #
-#
-# resoult=pinball_test(test_data)
-# print(resoult)
-#
-# set1={0,1,2,3}
-# set2={2,3,4,5}
-# print('Diff3:',set1.symmetric_difference(set2))
-# print('Diff3:',set2.symmetric_difference(set1))
-# print('Diff3:',set1.symmetric_difference_update(set2))
-# print(set1)
+# union=set1.union(set2)
+# print(union)
+
+# pinball test with 10  possible result
+test_data=[[1,2,3],[3,3,5],[8,9,4],[2,8,4]]
+iter_test_data=[]
+def pinball_test(data):
+    comparison_data=list(range(1,11))
+    print(comparison_data)
+    for test_data in comparison_data.copy():
+
+        for iner_list in data:
+            for elem in iner_list:
+                if elem in comparison_data:
+                    comparison_data.remove(elem)
+    return comparison_data
+
+
+resoult=pinball_test(test_data)
+print(resoult)
+
+set1={0,1,2,3}
+set2={2,3,4,5}
+print('Diff3:',set1.symmetric_difference(set2))
+print('Diff3:',set2.symmetric_difference(set1))
+print('Diff3:',set1.symmetric_difference_update(set2))
+print(set1)
 
 var1='var1'
 def outer():
@@ -49,29 +49,6 @@ print('outside',var1)
 def func1():
     global var1
     print(f'in func1"{var1}')
-
-# def rapper():
-#     name = 'Sir'
-#     def conversation():
-#
-#
-#         def hello ():
-#             nonlocal name
-#         print(f'Hello,{name}!')
-#
-#         def question():
-#         print(f"how is your day {name}?")
-#
-#         def response():
-#             nonlocal name
-#         name = input('My name is ')
-#         print(f'My name is:{name}')
-#
-#     hello()
-#     response()
-#     question()
-#     conversation()
-# rapper()
 
 
 

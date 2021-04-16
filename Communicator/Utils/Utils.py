@@ -1,17 +1,17 @@
-# def primes(max_prime):
-#     my_primes = []
-#
-#     print('Primes are: ', end='')
-#     for number in range(1, max_prime + 1):
-#         if number < 3:
-#             _primes.append(number)
-#             continue
-#         for divider in range(2, number):
-#             if number % divider == 0:
-#                 break
-#         else:
-#             primes.append(number)
-#     return primes
+def primes(max_prime):
+    my_primes = []
+
+    print('Primes are: ', end='')
+    for number in range(1, max_prime + 1):
+        if number < 3:
+            _primes.append(number)
+            continue
+        for divider in range(2, number):
+            if number % divider == 0:
+                break
+        else:
+            primes.append(number)
+    return primes
 #
 #
 # text='You cannot read this'
@@ -96,63 +96,145 @@
 
 
 
-name='Sir'
+# name='Sir'
+#
+# def hello ():
+#     print(f'Hello,{name}!')
+#
+# def question():
+#     print(f"how is your day {name}?")
+#
+# def response():
+#     name=input('My name is ')
+#     print(f'My name is:{name}')
+#
+# hello()
+# response()
+# question()
+#
+# data=[1,[2,[3,{'a','b'}]],4,[5,[6,{'a':'a','b':'b'}]],7,[8,[9,('a','b')]]]
+# resoult=[1,2,3,4,5,6,7,8,9]
+#
+#
+# def flatten_list(complex_list):
+#     flat_list=[]
+#     for obj_primary in complex_list:
+#         if type(obj_primary )==list:
+#             result= flatten_list(obj_primary)
+#             flat_list.extend(result)
+#         elif type(obj_primary)==tuple:
+#             result = flatten_list(obj_primary)
+#             flat_list.extend(result)
+#         elif type(obj_primary)== set:
+#             result = flatten_list(obj_primary)
+#             flat_list.extend(result)
+#         elif type(obj_primary)== dict:
+#             result = flatten_list(obj_primary)
+#             flat_list.extend(result)
+#         else:
+#             flat_list.append(obj_primary)
+#     return flat_list
+#
+# resoult=flatten_list(complex_list=data)
+# print('Flat list:',resoult)
+#
+# data=[1,[2,[3,{'a','b'}]],4,[5,[6,{'a':'a','b':'b'}]],7,[8,[9,('acd','b')]]]
+# resoult=[1,2,3,4,5,6,7,8,9]
+#
+#
+# def flatten_list(complex_list):
+#     flat_list=[]
+#     for obj_primary in complex_list:
+#         if type(obj_primary)==str and len(obj_primary)==1:
+#             flat_list.append(obj_primary)
+#         elif getattr(obj_primary.__iter__,False)
+#             result= flatten_list(obj_primary)
+#             flat_list.extend(result)
+#         else:
+#             flat_list.append(obj_primary)
+#     return flat_list
+#
+# resoult=flatten_list(complex_list=data)
+# print('Flat list:',resoult)
 
-def hello ():
-    print(f'Hello,{name}!')
 
-def question():
-    print(f"how is your day {name}?")
+def read_input():
+    global var1,var2,var3
 
-def response():
-    name=input('My name is ')
-    print(f'My name is:{name}')
+    try:
+        var1 = int(input())
+        var2 = int(input())
+        var3 = int(input())
+        result = var1 + var2 + var3
+    except:
+        pass
+    else:
+        var1,var2,var3=result,result,result
+    finally:
+        return result
+read_input()
+print(var1,var2,var3)
 
-hello()
-response()
-question()
-
-data=[1,[2,[3,{'a','b'}]],4,[5,[6,{'a':'a','b':'b'}]],7,[8,[9,('a','b')]]]
-resoult=[1,2,3,4,5,6,7,8,9]
 
 
-def flatten_list(complex_list):
-    flat_list=[]
-    for obj_primary in complex_list:
-        if type(obj_primary )==list:
-            result= flatten_list(obj_primary)
-            flat_list.extend(result)
-        elif type(obj_primary)==tuple:
-            result = flatten_list(obj_primary)
-            flat_list.extend(result)
-        elif type(obj_primary)== set:
-            result = flatten_list(obj_primary)
-            flat_list.extend(result)
-        elif type(obj_primary)== dict:
-            result = flatten_list(obj_primary)
-            flat_list.extend(result)
+class DuplicateDataException(ValueError):
+    '''exception class for duplicate entries'''
+    pass
+class ShoeFact():
+    '''Class to track worker progress'''
+    shoes = []
+    workers = {}
+    work_done = {}
+    def __init__(self,date: str):
+        self.date = date
+
+
+    def __iter__(self):
+        all_series = []
+        for series in self.work_done.values():
+            all_series.extend(series)
+
+        return ShoeIter(all_series)
+    def add_shoes_series(self,name: str ,series: list):
+        '''this method allows user to add work done'''
+        conflict = 0
+        try:
+            values = self.work_done[name]
+        except KeyError:
+            values = []
+        if set(values).intersection(set(series)):
+            raise DuplicateDataException(set(values).intersection(set(series)))
+        for worker_name,worker_series in self.work_done.items():
+            if set(series).intersection(set(worker_series)):
+                for duplicate in set(series).intersection(set(worker_series)):
+                    series.remove(duplicate)
+                    self.work_done[worker_name].remove(duplicate)
+                    self.workers[duplicate] = (worker_name,name)
+                conflict = 1
+        self.work_done[name] = series
+        if conflict:
+            raise ValueError(f'Conflict series: {duplicate}, Workers: {name}, {worker_name} will be raised')
+
+class ShoeIter():
+    '''Class for iterating all series'''
+    def __init__(self,series: list):
+        self.series = series
+    def __iter__(self):
+        return self
+    def __next__(self):
+        if not self.series:
+            raise StopIteration
         else:
-            flat_list.append(obj_primary)
-    return flat_list
-
-resoult=flatten_list(complex_list=data)
-print('Flat list:',resoult)
-
-data=[1,[2,[3,{'a','b'}]],4,[5,[6,{'a':'a','b':'b'}]],7,[8,[9,('acd','b')]]]
-resoult=[1,2,3,4,5,6,7,8,9]
-
-
-def flatten_list(complex_list):
-    flat_list=[]
-    for obj_primary in complex_list:
-        if type(obj_primary)==str and len(obj_primary)==1:
-            flat_list.append(obj_primary)
-        elif getattr(obj_primary.__iter__,False)
-            result= flatten_list(obj_primary)
-            flat_list.extend(result)
-        else:
-            flat_list.append(obj_primary)
-    return flat_list
-
-resoult=flatten_list(complex_list=data)
-print('Flat list:',resoult)
+            return self.series.pop(0)
+shoes1 = ShoeFact('04.06.2021')
+shoes1.add_shoes_series('Jerry',[124,125,126])
+# shoes1.add_shoes_series('Jerry',[124,130,131])
+shoes1.add_shoes_series('Max',[234,235,236])
+try:
+    shoes1.add_shoes_series('Gigel',[234,278,279])
+except ValueError:
+    pass
+print(shoes1.work_done)
+with open ('file','w') as file:
+    for i in shoes1:
+        file.write(str(i) + '\n')

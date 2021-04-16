@@ -60,7 +60,7 @@ print(type(my_list)==list)
 #ex1
 
 data=[1,[2,[3]],4,[5,[6]],7,[8,[9]]]
-resoult=[1,2,3,4,5,6,7,8,9]
+result=[1,2,3,4,5,6,7,8,9]
 
 def flatten_list(complex_list):
     flat_list=[]
@@ -80,8 +80,8 @@ def flatten_list(complex_list):
             flat_list.append(obj_primary)
     return flat_list
 
-resoult=flatten_list(complex_list=data)
-print(resoult)
+result=flatten_list(complex_list=data)
+print(result)
 
 # XOR
 
