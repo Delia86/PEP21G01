@@ -11,19 +11,21 @@
 def build(a, b, c):
 
     def response(x):
-        return a*x^2+b*x+c
+        return a*x**2+b*x+c
 
     return response
-result1=build(1,-2,2)
-result2=build(2,-4,4)
-result3=build(3,-6,6)
-# print(result1(x))
+# result1=build(1,-2,2)
+# result2=build(2,-4,4)
+# result3=build(3,-6,6)
+# # print(result1(x))
 
 # 20P
 # Create a list of response functions by calling build function with the arguments (1,-2,3), (2,-4,4), (3,-6,5)
 list_of_functions = []
 for a, b, c in ((1, -2, 2), (2, -4, 4), (3, -6, 6)):
+    list_of_functions.append(build(a,b,c))
 
+print(list_of_functions)
 
 
 # 20P
@@ -31,7 +33,7 @@ for a, b, c in ((1, -2, 2), (2, -4, 4), (3, -6, 6)):
 # function with x in range -10, 10 as value
 dict_of_results = {}
 for function in list_of_functions:
-    pass  # <your code here>
+
 
 # 20P
 # Check dict_of_results and determine which function has the smallest value in the list of values

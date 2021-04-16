@@ -38,34 +38,42 @@
 # 10P
 # Create an object from your class with default constructor values and modify angle AB by +30 degrees and side A by +1.5
 
-from math import cos,acos
+from math import cos, acos
+
 
 class Triangle():
-    side1=A
-    side2=B
-    side3=C
-    angle1=AB
-    angle2=BC
-    angle3=CA
 
-    def __init__(self,angle1=60,angle2=60,angle3=60,side1=1, side2=1,side3=1 ):
-        self.angle1=angle1
-        self.angle2=angle2
-        self.angle3=angle3
-        self.side1=side1
-        self.side2=side2
-        self.side3=side3
+    def __init__(self, angle1=60, angle2=60, angle3=60, side1=1, side2=1, side3=1):
+        self.AB = angle1
+        self.BC = angle2
+        self.CA = angle3
+        self.A = side1
+        self.B = side2
+        self.C = side3
 
-    def modify_angle(self,'angle','degress'):
+    def modify_angle(self,angle, degrees):
+        self.angle = angle
 
-        try:
-            AB=AB+30
+    if self.angle == 'AB':
+        self.AB = self.AB + degrees
+    if self.AB <= 0 or self.AB >= 180:
+        raise Exception
+
+    def modify_side(self, side, meters):
+        self.side = side
+
+        if self.side=='A'
+            self.A=self.A+meters
+            self.B=((self.A+1)/self.A)*self.B
+            self.C = ((self.A + 1) / self.A) * self.C
+            if(self.A+self.B<self.C)or(self.B+self.C<self.A)or(self.C+self.A<self.B):
+                raise Exception
+            elif(self.A<=0) or (self.B<=0)or(self.C<=0):
+                raise Exception ('Lenght should be  greater than zero')
 
 
-    def modify_side(self,'side','meters'):
 
 
-triangle=Triangle()
+triangle = Triangle(60, 60, 60, 1, 1, 1)
 triangle.modify_angle()
 triangle.modify_side()
-
