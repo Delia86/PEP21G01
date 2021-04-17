@@ -21,39 +21,38 @@
 #    c) documentati metodele 5p
 
 
-lass
-CarFactory():
-"""Class to track series and car numbers"""
 
+class CarFactory():
 
-def __init__(self, start_series: int, car_numbers: int):
-    self.start_series = start_series
-    self.car_numbers = car_numbers
-    lot_start = start_series // 20 + 1  # if start_series % 20 else 0
-    lot_end = (start_series + car_numbers) // 20 + 1
-    self.lot = list(range(lot_start, lot_end + 1))
-    self.car_series = list(range(start_series, start_series + car_numbers + 1))
+    def __init__(self,start_series:int,car_numbers:int):
+        self.start_series=start_series
+        self.car_numbers=car_numbers
+        lot_start=start_series//20+1
+        lot_end=(start_series +car_numbers)//20+1
+        self.lot=list(range(lot_start,lot_end+1))
+        self.car_series=list(range(start_series,start_series+car_numbers+1))
 
+    def __iter__(self):
+        return CarIter(self.lot)
 
-def __iter__(self):
-    return CarIter(self.lot)
+    def get_right_steering_wheel(self):
 
+        right_steering_wheel=[]
 
-def get_right_steering_wheel(self):
-    right_steering_wheel = []
+        for car in self.car_series:
+            if car% 2== 0:
+                right_steering_wheel.append(car)
+        print(right_steering_wheel)
 
-    for cars in self.car_series:
-        if cars % 2 == 0:
-            right_steering_wheel.append(cars)
-    print(right_steering_wheel)
+    def get_left_steering_wheel(self):
 
+        left_steering_wheell=[]
 
-def get_left_steering_wheel(self):
-    left_steering_wheel = []
-    for cars in self.car_series:
-        if cars % 2 != 0:
-            left_steering_wheel.append(cars)
-    print(left_steering_wheel)
+        for car in self.car_series:
+            if car %2!=0:
+                left_steering_wheell.append(car)
+        print(left_steering_wheell)
+
 
 
 class CarIter():
@@ -80,5 +79,3 @@ cars.get_left_steering_wheel()
 with open('file', 'w') as file:
     for x in cars.lot:
         file.write(str(x) + '\n')
-
-
