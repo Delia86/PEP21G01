@@ -66,7 +66,7 @@ class Factory():
         self.total_work[name] = [self.start_time]
 
 
-    def add_worker_end_time(self, name, end_time:list):
+    def add_worker_end_time(self, name:str, end_time:list):
         """Allows user to add work end time """
 
 
